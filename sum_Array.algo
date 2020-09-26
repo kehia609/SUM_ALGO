@@ -1,0 +1,34 @@
+ALGORITHM SUM
+VAR
+    sum,d,i,j,a,b : INTEGER;
+    set1 : ARRAY_OF INTEGER[a];
+    set2 : ARRAY_OF INTEGER[d];
+    wrong : BOOLEAN:=false;
+BEGIN
+  Write("how much element in the first set")
+  Read(a)
+  FOR i FROM 0 TO a-1 STEP 1  DO
+     Write("inseret the ",i," number")
+     Read(b)
+     set1[i]:=b; 
+  END_FOR
+  Write("how much element in the second set")
+  Read(c)
+  FOR j FROM 0 TO c-1 STEP 1  DO
+      Write("insert the ",j," number")
+      Read(d)
+      set2[j]:=d
+  END_FOR
+  sum:=0;
+  FOR i FROM 0 TO a-1 STEP 1  DO
+      FOR j FROM 0 TO d-1 STEP 1  DO
+          IF (set1[i]=set2[j]) THEN
+              wrong:=true;
+          END_IF        
+      END_FOR 
+      IF (wrong=false) THEN
+              sum:=sum+set1[i];
+          END_IF  
+  END_FOR
+  Write("sum of the distinct elements",sum)
+END

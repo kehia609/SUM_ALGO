@@ -1,0 +1,29 @@
+ALGORITHM hash_tab
+VAR
+    htab1:HASH_TABLE<INTEGER,INTEGER>;
+    htab2:HASH_TABLE<INTEGER,INTEGER>;
+    a,b,i,j,sum : INTEGER;
+    wrong : BOOLEAN:=false;
+BEGIN
+  Write("how much number do you want to insert in the first set")
+  Read(a)
+    FOR i FROM 0 TO a STEP 1  DO
+        htab1.insert(i,i) 
+    END_FOR
+  Write("how much number do you want to insert in the second set")
+  Read(b)
+    FOR j FROM 0 TO b STEP 1  DO
+        htab2.insert(j,j)
+    END_FOR
+    FOR i FROM 0 TO a STEP 1  DO
+        FOR j FROM 0 TO b STEP 1  DO
+            IF (htab1.get(i)<>htab2.get(j)) THEN
+                wrong:=true;
+            END_IF
+        END_FOR
+        IF (wrong=false) THEN
+            sum:=sum+htab1.get(i);
+        END_IF
+    END_FOR
+    Write("sum of the overlapping elements",sum)
+END
